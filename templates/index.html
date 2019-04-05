@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<!-- Required meta tags -->
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	    <link rel = "stylesheet" type="text/css" href = "../static/main.css">
+
+		<title> {{ data.name }} | Weather App</title>
+	</head>
+	<body class="document">
+		<header class="site-header">
+			<a class="website-title">Weather App </a>
+		</header>
+
+		<hr class="brace">
+
+		<main role = "main" class="container">
+			<div class="document-content">
+				<div class = "row content-section">
+					<div class = "col-md-10 city-form">
+						<form method = "POST" action = "">
+							{{ form.hidden_tag() }}
+							<fieldset class = "form-group">
+								<div>
+									{{ form.city_name.label(class="form-control-label") }}
+									{% if form.city_name.errors %}
+										{{form.city_name(class="form-control form-control-lg is-invalid")}}
+										<div class="invalid-feedback">
+											{% for error in form.city_name.errors %}
+												<span>{{ error }}</span>
+											{% endfor %}
+										</div>
+									{% else %}
+										{{ form.city_name(class="form-control form-control-lg") }}
+									{% endif %}
+								</div> 
+							</fieldset>
+							<div class="form-group">
+								{{ form.submit(class="btn btn-outline-info") }}
+							</div>
+
+						</form>
+					</div>
+				</div>
+				<div class="content-section information">
+					<div class="row">
+						<h4 class="name">{{ data.name }}</h4>
+					</div>
+					<hr>
+					<div class="row">
+						<a class="col-md-4">{{ data.weather[0].main }}: {{ data.weather[0].description  }}</a>
+						<a class="col-md-4">Temp {{ data.main.temp }} &deg;F</a>
+						<a class="col-md-4">Wind Speed: {{ data.wind.speed }} </a>
+					</div>
+				</div>
+			</div>
+
+		</main>
+
+
+		<!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>
