@@ -8,20 +8,20 @@
 
 	    <!-- Bootstrap CSS -->
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	    <link rel="shortcut icon" href="../static/favicon.ico">
 
 	    <link rel = "stylesheet" type="text/css" href = "../static/main.css">
 
 		<title> {{ data.name }} | Weather App</title>
 	</head>
 	<body class="document">
-		<header class="site-header">
-			<a class="website-title">Weather App </a>
-		</header>
-
-		<hr class="brace">
 
 		<main role = "main" class="container">
+			<header class="site-header">
+				<a class="website-title">Weather App </a>
+			</header>
+		
+			<hr class="brace">
 			<div class="document-content">
 				<div class = "row content-section">
 					<div class = "col-md-10 city-form">
@@ -49,15 +49,16 @@
 						</form>
 					</div>
 				</div>
+				<hr>
 				<div class="content-section information">
 					<div class="row">
-						<h4 class="name">{{ data.name }}</h4>
+						<h4 class="name">Weather in {{ data.name }}</h4>
 					</div>
 					<hr>
 					<div class="row">
 						<a class="col-md-4">{{ data.weather[0].main }}: {{ data.weather[0].description  }}</a>
-						<a class="col-md-4">Temp {{ data.main.temp }} &deg;F</a>
-						<a class="col-md-4">Wind Speed: {{ data.wind.speed }} </a>
+						<a class="col-md-4">Temp: {{ data.main.temp }} &deg;F</a>
+						<a class="col-md-4">Wind Speed: {{ data.wind.speed }} mph</a>
 					</div>
 				</div>
 			</div>
